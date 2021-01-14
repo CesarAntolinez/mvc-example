@@ -8,6 +8,6 @@ class ControllerTemplate
 
     public function template_get()
     {
-        include "pages/index.html";
+        include "views/template.php";
     }
 }
