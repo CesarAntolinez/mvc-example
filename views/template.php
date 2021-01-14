@@ -22,21 +22,36 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.php?page=home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="index.php?page=register">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="index.php?page=login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="index.php?page=close_session">exit</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<?php
+if (isset($_GET['page']))
+{
+    if ($_GET['page'] == "home" ||
+        $_GET['page'] == "register" ||
+        $_GET['page'] == "login" ||
+        $_GET['page'] == "close_session")
+    {
+        include "views/pages/". $_GET['page'] . ".php";
+    }
+}else{
+    include "views/pages/index.php";
+}
+?>
 
 <!-- Plugins JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
