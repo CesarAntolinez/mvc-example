@@ -21,11 +21,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <?php if (isset($_GET['page'])): ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($_GET['page'] == "home") ? "active" : "" ?>" aria-current="page" href="index.php?page=home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($_GET['page'] == "register") ? "active" : "" ?>" href="index.php?page=register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($_GET['page'] == "login") ? "active" : "" ?>" href="index.php?page=login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?page=close_session">exit</a>
+                    </li>
+                <?php else: ?>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php?page=home">Home</a>
+                    <a class="nav-link" aria-current="page" href="index.php?page=home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=register">Register</a>
+                    <a class="nav-link active" href="index.php?page=register">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=login">Login</a>
@@ -33,6 +47,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=close_session">exit</a>
                 </li>
+                <?php endif;?>
             </ul>
         </div>
     </div>
@@ -47,9 +62,11 @@ if (isset($_GET['page']))
         $_GET['page'] == "close_session")
     {
         include "views/pages/". $_GET['page'] . ".php";
+    }else{
+        include "views/error/404.php";
     }
 }else{
-    include "views/pages/index.php";
+    include "views/pages/register.php";
 }
 ?>
 
